@@ -1,6 +1,6 @@
 import os
 from flask import Flask, render_template
-from flask_app.models import db, migrate
+# from flask_app.models import db, migrate
 
 data_file = os.path.join(os.getcwd(), __name__, '/Data/2020_travel_survey.xlsx') 
 

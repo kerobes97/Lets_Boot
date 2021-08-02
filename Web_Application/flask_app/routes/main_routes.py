@@ -3,14 +3,14 @@ from flask import Blueprint, render_template
 
 bp = Blueprint('main', __name__,  template_folder='templates')
 
-@bp.route('/', methods=['GET'])
+@bp.route('/')
 def index():
     return render_template('index.html')
     # return "Welcome to Index page"
 
 @bp.route('/login')
 def login():
-    return render_template('login.html')
+    return render_template('create.html')
 
 @bp.route('/trends')
 def trends():
