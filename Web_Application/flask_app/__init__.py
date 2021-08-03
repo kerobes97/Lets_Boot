@@ -1,19 +1,18 @@
 import os
-from flask import Flask, render_template
-# from flask_app.models import db, migrate
+from flask import Flask
+from flask_sqlalchemy import SQLAlchemy
 
 data_file = os.path.join(os.getcwd(), __name__, '/Data/2020_travel_survey.xlsx') 
 
 def create_app():
     app  = Flask(__name__)
+    db = SQLAlchemy(app)
 
     app.config['SQLALCHEMY_DATABASE_URI'] = "sqlite+pysqlite:///test.db"
+    app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = True
 
-    # db.init_app(app)
-    # migrate.init_app(app, db)
-
-    from flask_app.routes import main_routes
-    app.register_blueprint(main_routes.bp)
+    from flask_app import routes
+    app.register_blueprint(routes.bp)
 
     return app
 
